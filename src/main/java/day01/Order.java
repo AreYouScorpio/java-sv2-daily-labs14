@@ -12,6 +12,9 @@ public class Order{
     private LocalDate date;
     public static List<Product> products = new ArrayList<>();
 
+    public static List<Product> getProducts() {
+        return products;
+    }
 
     public Order(String status, LocalDate date, List<Product> products) {
         this.status = status;

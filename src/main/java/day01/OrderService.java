@@ -3,11 +3,15 @@ package day01;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class OrderService {
 
     public static List<Order> orders = new ArrayList<>();
 
+    public static List<Order> getOrders() {
+        return orders;
+    }
 
     public void findOrdersByStatus(String status) {
         int counter = 0;
@@ -27,6 +31,11 @@ public class OrderService {
         System.out.println(     orders.stream().filter(p -> (p.getDate().isAfter(from.minusDays(1)) && p.getDate().isBefore(to.plusDays(1)))).count());
     }
 
+    public void findHowManyProductinOrder(int howManyProductinOrder){
+        orders.stream().reduce(new ArrayList<Product>(), (l1,l2,l3 ->
+        {l2.addProduct(l3);
+         return  l1;}))
+    }
 
     public static void main(String[] args) {
         OrderService orderService = new OrderService();
@@ -72,6 +81,7 @@ public class OrderService {
         orderService.findOrdersByStatus("pending");
         orderService.findOrdersByStatus2("on delivery");
         orderService.findOrderByDate(LocalDate.of(2021,6,1), LocalDate.of(2021,6,1));
+        orderService.findHowManyProductinOrder(4);
     }
 
 
