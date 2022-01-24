@@ -2,10 +2,9 @@ package day01;
 
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class OrderServiceTest {
 
@@ -45,12 +44,20 @@ class OrderServiceTest {
         o5.addProduct(p1);
         o5.addProduct(p2);
         o5.addProduct(p5);
+    }
 
+        @Test
+        void tesztelgetes(){
+            System.out.println(orderService.toString());
+        }
+        /*
         orderService.saveOrder(o1);
         orderService.saveOrder(o2);
         orderService.saveOrder(o3);
         orderService.saveOrder(o4);
         orderService.saveOrder(o5);
+
+         */
     }
 
-}
+
