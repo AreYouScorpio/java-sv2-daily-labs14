@@ -10,7 +10,7 @@ public class Order{
 
     private String status;
     private LocalDate date;
-    private List<Product> products = new ArrayList<>();
+    public static List<Product> products = new ArrayList<>();
 
 
     public Order(String status, LocalDate date, List<Product> products) {

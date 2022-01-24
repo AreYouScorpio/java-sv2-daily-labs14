@@ -11,14 +11,22 @@ public class OrderService {
     public static List<Order> orders = new ArrayList<>();
 
 
+    public void findOrdersByStatus(String status) {
+        int counter = 0;
+        for (int i = 0; i < orders.size(); i++) {
+            if (orders.get(i).getStatus().equals(status)) counter++;
+        }
+        System.out.println(counter);
+    }
 
-public void findOrdersByStatus (String status){
-    System.out.println(orders.stream().count());
-}
+    public void findOrdersByStatus2(String status) {
+        System.out.println(orders.stream().filter(p -> p.getStatus().equals(status)).count());
+
+    }
+
 
     public static void main(String[] args) {
-    OrderService orderService = new OrderService();
-
+        OrderService orderService = new OrderService();
 
 
         Product p1 = new Product("Tv", "IT", 2000);
@@ -52,11 +60,15 @@ public void findOrdersByStatus (String status){
         o5.addProduct(p2);
         o5.addProduct(p5);
 
-        System.out.println(o1);
+        orders.add(o1);
+        orders.add(o2);
+        orders.add(o3);
+        orders.add(o4);
+        orders.add(o5);
 
-    orderService.findOrdersByStatus("pending");
+        orderService.findOrdersByStatus("pending");
+        orderService.findOrdersByStatus2("pending");
     }
-
 
 
 }
