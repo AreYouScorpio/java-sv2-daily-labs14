@@ -3,6 +3,7 @@ package day01;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.OptionalInt;
 import java.util.stream.Collectors;
 
 public class OrderService {
@@ -32,9 +33,15 @@ public class OrderService {
     }
 
     public void findHowManyProductinOrder(int howManyProductinOrder){
-        orders.stream().reduce(new ArrayList<Product>(), (l1,l2,l3 ->
-        {l2.addProduct(l3);
-         return  l1;}))
+        System.out.println(orders.stream().filter(order -> order.getProducts().size()<howManyProductinOrder).toList());
+        System.out.println(orders.get(0).getProducts().get(0).getName());
+    }
+
+
+    public void findMaxOrder(){
+        OptionalInt number = orders.stream().mapToInt(order -> order.getProducts().size()).max();
+        System.out.println(number);
+        System.out.println(orders.stream().filter(order -> order.getProducts().size()==number.getAsInt()).toList());
     }
 
     public static void main(String[] args) {
@@ -72,16 +79,20 @@ public class OrderService {
         o5.addProduct(p2);
         o5.addProduct(p5);
 
+
         orders.add(o1);
         orders.add(o2);
         orders.add(o3);
         orders.add(o4);
         orders.add(o5);
 
+        System.out.println(o1);
+
         orderService.findOrdersByStatus("pending");
         orderService.findOrdersByStatus2("on delivery");
         orderService.findOrderByDate(LocalDate.of(2021,6,1), LocalDate.of(2021,6,1));
-        orderService.findHowManyProductinOrder(4);
+        orderService.findHowManyProductinOrder(111);
+        orderService.findMaxOrder();
     }
 
 
