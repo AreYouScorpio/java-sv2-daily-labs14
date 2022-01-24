@@ -3,8 +3,6 @@ package day01;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
 
 public class OrderService {
 
@@ -22,6 +20,11 @@ public class OrderService {
     public void findOrdersByStatus2(String status) {
         System.out.println(orders.stream().filter(p -> p.getStatus().equals(status)).count());
 
+    }
+
+    public void findOrderByDate(LocalDate from, LocalDate to){
+        System.out.println(     orders.stream().filter(p -> (p.getDate().isAfter(from.minusDays(1)) && p.getDate().isBefore(to.plusDays(1)))).toList());
+        System.out.println(     orders.stream().filter(p -> (p.getDate().isAfter(from.minusDays(1)) && p.getDate().isBefore(to.plusDays(1)))).count());
     }
 
 
@@ -67,7 +70,8 @@ public class OrderService {
         orders.add(o5);
 
         orderService.findOrdersByStatus("pending");
-        orderService.findOrdersByStatus2("pending");
+        orderService.findOrdersByStatus2("on delivery");
+        orderService.findOrderByDate(LocalDate.of(2021,6,1), LocalDate.of(2021,6,1));
     }
 
 
