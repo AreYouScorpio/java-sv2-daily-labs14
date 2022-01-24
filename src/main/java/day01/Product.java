@@ -23,4 +23,13 @@ public class Product {
     public int getPiece() {
         return piece;
     }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "name='" + name + '\'' +
+                ", type='" + type + '\'' +
+                ", piece=" + piece +
+                '}';
+    }
 }

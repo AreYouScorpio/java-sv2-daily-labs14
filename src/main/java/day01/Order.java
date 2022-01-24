@@ -1,6 +1,7 @@
 package day01;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -9,7 +10,7 @@ public class Order{
 
     private String status;
     private LocalDate date;
-    private List<Product> products;
+    private List<Product> products = new ArrayList<>();
 
 
     public Order(String status, LocalDate date, List<Product> products) {
@@ -36,5 +37,12 @@ public class Order{
         products.add(product);
     }
 
-
+    @Override
+    public String toString() {
+        return "Order{" +
+                "status='" + status + '\'' +
+                ", date=" + date +
+                ", products=" + products +
+                '}';
+    }
 }
