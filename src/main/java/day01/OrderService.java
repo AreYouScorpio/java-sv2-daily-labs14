@@ -37,7 +37,11 @@ public class OrderService {
         System.out.println("A 0. order, 0. productjának neve: " + orders.get(0).getProducts().get(0).getName());
     }
 
-
+public void findOrderByStatus(String status){
+        for (int i=0; i<orders.size(); i++){
+            for (int j=0; j<orders.get(i).getProducts().size();j++){
+    if (orders.get(i).getProducts().get(j).getType().equals(status)) System.out.println(orders.get(i));;
+}}}
 
     public void findMaxOrder(){
         OptionalInt number = orders.stream().mapToInt(order -> order.getProducts().size()).max();
@@ -101,6 +105,7 @@ public class OrderService {
         orderService.findOrderByDate(LocalDate.of(2021,6,1), LocalDate.of(2021,6,1));
         orderService.findHowManyProductinOrder(111);
         orderService.findMaxOrder();
+        orderService.findOrderByStatus("IT");
     }
 
 
