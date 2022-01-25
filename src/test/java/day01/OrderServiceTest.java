@@ -10,6 +10,7 @@ class OrderServiceTest {
 
     OrderService orderService;
 
+
     @BeforeEach
     void init() {
         orderService = new OrderService();
@@ -45,6 +46,8 @@ class OrderServiceTest {
         o5.addProduct(p2);
         o5.addProduct(p5);
     }
+
+
 
         @Test
         void tesztelgetes(){
