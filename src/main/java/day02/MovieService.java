@@ -1,7 +1,7 @@
 package day02;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class MovieService {
 
@@ -22,6 +22,27 @@ public class MovieService {
         return movies;
     }
 
+    public List<Movie> getMoviesByActor(String actor){
+
+
+        return movies.stream().filter(o-> o.getActors().stream().anyMatch(p-> p.equals(actor))).collect(Collectors.toList());
+    }
+
+    private int getLongestFilmLength(){
+        int maxLength;
+
+                maxLength = movies.stream().mapToInt(o->o.getLength()).max().getAsInt();
+        return maxLength;
+    }
+
+    private String getLongestFilm(){
+        String longestMovie;
+
+        longestMovie = movies.stream().sorted(Collections.reverseOrder(Comparator.comparing(Movie::getLength))).findFirst().get().getTitle();
+        return longestMovie;
+    }
+
+
 
     public static void main(String[] args) {
 
@@ -38,6 +59,12 @@ public class MovieService {
         movieService.addMovie(movie3);
 
         System.out.println(movies);
+
+        System.out.println(movieService.getMoviesByActor("A1"));
+        System.out.println("A leghosszabb film hossza: ");
+        System.out.println(movieService.getLongestFilmLength());
+        System.out.println("A leghosszabb film címe: ");
+        System.out.println(movieService.getLongestFilm());
 
     }
 }
