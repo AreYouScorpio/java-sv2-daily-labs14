@@ -38,16 +38,18 @@ public class OrderService {
     }
 
 
+
     public void findMaxOrder(){
         OptionalInt number = orders.stream().mapToInt(order -> order.getProducts().size()).max();
         int sum = 0;
-        System.out.println(number.getAsInt());
-        System.out.println(orders.stream().filter(order -> order.getProducts().size()==number.getAsInt()).toList());
+        System.out.println("A legtöbb product: " +number.getAsInt());
+        System.out.println("Az ehhez tartozó order: " + orders.stream().filter(order -> order.getProducts().size()==number.getAsInt()).toList());
         for (int i=0; i<number.getAsInt(); i++) {
-            sum=orders.stream().mapToInt(order -> order.getProducts().get(i).getPiece()).sum();
-        System.out.println(sum);
+            sum=orders.stream().mapToInt(order -> order.getSumPieces()).sum();
+
         }
-        System.out.println(orders.stream().filter(order -> order.getProducts().size()==number.getAsInt()).toList());
+        System.out.println("Az orderben lévő összes darab: " + sum);
+        System.out.println("Az ehhez tartozó order: " + orders.stream().filter(order -> order.getProducts().size()==number.getAsInt()).toList());
     }
 
     public static void main(String[] args) {

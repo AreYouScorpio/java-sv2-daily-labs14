@@ -10,9 +10,9 @@ public class Order{
 
     private String status;
     private LocalDate date;
-    public static List<Product> products = new ArrayList<>();
+    public  List<Product> products = new ArrayList<>();
 
-    public static List<Product> getProducts() {
+    public  List<Product> getProducts() {
         return products;
     }
 
@@ -38,6 +38,10 @@ public class Order{
 
     public void addProduct(Product product){
         products.add(product);
+    }
+
+    public int getSumPieces(){
+        return products.stream().mapToInt(p-> p.getPiece()).sum();
     }
 
     @Override
