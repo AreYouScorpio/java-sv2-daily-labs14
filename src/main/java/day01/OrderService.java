@@ -19,22 +19,22 @@ public class OrderService {
         for (int i = 0; i < orders.size(); i++) {
             if (orders.get(i).getStatus().equals(status)) counter++;
         }
-        System.out.println(counter);
+        System.out.println(status + " státuszú orderek hagyományos for ciklussal: " + counter);
     }
 
     public void findOrdersByStatus2(String status) {
-        System.out.println(orders.stream().filter(p -> p.getStatus().equals(status)).count());
+        System.out.println(status + " státuszú orderek stream-mel: " + orders.stream().filter(p -> p.getStatus().equals(status)).count());
 
     }
 
     public void findOrderByDate(LocalDate from, LocalDate to){
-        System.out.println(     orders.stream().filter(p -> (p.getDate().isAfter(from.minusDays(1)) && p.getDate().isBefore(to.plusDays(1)))).toList());
-        System.out.println(     orders.stream().filter(p -> (p.getDate().isAfter(from.minusDays(1)) && p.getDate().isBefore(to.plusDays(1)))).count());
+        System.out.println( "Két dátum közé eső orderek: " +   orders.stream().filter(p -> (p.getDate().isAfter(from.minusDays(1)) && p.getDate().isBefore(to.plusDays(1)))).toList());
+        System.out.println( "Ennyi order van két dátum között: "+    orders.stream().filter(p -> (p.getDate().isAfter(from.minusDays(1)) && p.getDate().isBefore(to.plusDays(1)))).count());
     }
 
     public void findHowManyProductinOrder(int howManyProductinOrder){
-        System.out.println(orders.stream().filter(order -> order.getProducts().size()<howManyProductinOrder).toList());
-        System.out.println(orders.get(0).getProducts().get(0).getName());
+        System.out.println(howManyProductinOrder + " productnál kevesebbet tartalmazó orderek: " + orders.stream().filter(order -> order.getProducts().size()<howManyProductinOrder).toList());
+        System.out.println("A 0. order, 0. productjának neve: " + orders.get(0).getProducts().get(0).getName());
     }
 
 
