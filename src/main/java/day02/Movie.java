@@ -24,4 +24,13 @@ public class Movie {
     public List<String> getActors() {
         return actors;
     }
+
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "title='" + title + '\'' +
+                ", length=" + length +
+                ", actors=" + actors +
+                '}';
+    }
 }
