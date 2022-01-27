@@ -1,16 +1,19 @@
 package day04;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 public class PairFinder {
 
     public int findPairs(int[] arr){ // -> 5,1,4,5
         int pairs=0;
-        int [] newArr = Arrays.stream(arr).distinct().sorted().toArray().;
+        int [] newArr = Arrays.stream(arr).distinct().sorted().toArray();
         for (int i=0; i<newArr.length; i++) {
 
-            int actualNumber=newArr[i]; // 1,4,5 and  1, 3, 5, 6, 7
-            pairs+= (Arrays.stream(arr).filter(p->p==actualNumber).count())/2;
+            int actualNumber = newArr[i]; // 1,4,5 and  1, 3, 5, 6, 7
+            pairs += (Arrays.stream(arr).filter(p -> p == actualNumber).count()) / 2;
+
+            System.out.println(newArr[i] + "-s számból ennyi van: " + Collections.frequency(Arrays.stream(arr).boxed().toList(), newArr[i]));
         }
         return pairs;
     }
