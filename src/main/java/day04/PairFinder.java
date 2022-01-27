@@ -6,7 +6,7 @@ public class PairFinder {
 
     public int findPairs(int[] arr){ // -> 5,1,4,5
         int pairs=0;
-        int [] newArr = Arrays.stream(arr).distinct().sorted().toArray();
+        int [] newArr = Arrays.stream(arr).distinct().sorted().toArray().;
         for (int i=0; i<newArr.length; i++) {
 
             int actualNumber=newArr[i]; // 1,4,5 and  1, 3, 5, 6, 7
