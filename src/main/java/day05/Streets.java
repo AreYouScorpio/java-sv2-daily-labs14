@@ -32,7 +32,7 @@ public class Streets {
                     System.out.println(housenumbers.stream().filter(o->o%2<1).findFirst().get());
                     housenumbers.remove(housenumbers.stream().filter(o->o%2<1).findFirst().get());
                 }
-                if (entry.getValue().get(i)==1) {
+                else {
                 System.out.println(housenumbers.stream().filter(o->o%2>0).findFirst().get());
                 housenumbers.remove(housenumbers.stream().filter(o->o%2>0).findFirst().get());
             }
