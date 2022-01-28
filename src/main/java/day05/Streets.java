@@ -36,22 +36,13 @@ public class Streets {
                 System.out.println(housenumbers.stream().filter(o->o%2>0).findFirst().get());
                 housenumbers.remove(housenumbers.stream().filter(o->o%2>0).findFirst().get());
             }
-            // do something with key and/or tab
         }}
 
 
 
 
 
-        /*
-        GetAnswer getAnswer = new GetAnswer(fileReader);
 
-        System.out.println(fileReader.answers);
-        System.out.println(getAnswer.getAnswer("AB123", 2));
-
-        getAnswer.whoIsTheWinner();
-
-         */
     }
 
 }
