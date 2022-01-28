@@ -26,6 +26,7 @@ public class Streets {
             System.out.println(entry.getKey() + " utca: ");
             System.out.println("Adatsora: " + entry.getValue().toString());
             System.out.println("Házszámai: ");
+
             for (int i = 0; i<entry.getValue().size();i++) {
                 if (entry.getValue().get(i)==0) {
                     System.out.println(housenumbers.stream().filter(o->o%2<1).findFirst().get());
